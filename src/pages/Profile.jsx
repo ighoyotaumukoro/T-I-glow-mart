@@ -6,29 +6,37 @@ function Profile() {
     const [otp, setOtp] = useState("");
     const [loading, setLoading] = useState(false);
     const [step, setStep] = useState(1);
+
     const handleSendOtp = async () => {
         if (!email) return alert("Enter Email Address");
-        const { error } = await supabase.auth.signInWithOtp({ email: email, });
-        setLoading(false);
-        if (error) {
-            alert(error.message);
-        } else {
+        if (loading) return;
+        setLoading(true);
+        try {
+            await supabase.auth.signOut();
+            const { error } = await supabase.auth.signInWithOtp({ email: email.trim().toLowerCase(), options: { shouldCreateUser: true } });
+
+            if (error) throw error;
             alert("OTP sent! check your email");
             setStep(2)
+        } catch (err) {
+            alert(err.message)
         }
+        setLoading(false)
     };
     const handleVerifyOtp = async () => {
-        setLoading(true);
+        if (!otp || otp.trim().length !== 6) return
+        console.log("Enter 6-digit code that as sent to your email")
+        setLoading(true)
         const { error } = await supabase.auth.verifyOtp({
-            email: email,
-            token: otp,
+            email: email.trim().toLowerCase(),
+            token: otp.trim(),
             type: "email"
         });
         setLoading(false)
         if (error) {
-            alert(error.message)
+            console.log(error)
         } else {
-            alert("Login Successful!");
+            console.log("Login Successful!");
             window.location.href = "/";
         }
     };
