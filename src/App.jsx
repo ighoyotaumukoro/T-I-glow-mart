@@ -5,6 +5,8 @@ import Homepage from "./pages/Homepage"
 import Checkout from "./pages/Checkout"
 import Cart from "./pages/Cart"
 import Navbar from "./pages/Navbar"
+import Footer from "./pages/Footer"
+
 
 
 function App(){
@@ -19,6 +21,7 @@ function App(){
     <Route path="/profile" element={<Profile />} />
     
 </Routes>
+
 </BrowserRouter>
     )
 }
