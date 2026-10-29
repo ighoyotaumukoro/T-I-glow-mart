@@ -5,7 +5,7 @@ import Footer from "../pages/Footer"
 function Homepage() {
     return(
     <>
-    <div className="w-full min-h-screen bg-hite pt-24 px-4 md:px-8">
+    <div className="w-full min-h-screen bg-hite pt-24 px-4 md:px-8 mt-5">
         <select className="w-90 bg-gray-100 py-3 rounded px-2">
             <option>All</option>
              <option>Perfume</option>

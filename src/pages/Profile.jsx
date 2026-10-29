@@ -42,13 +42,13 @@ function Profile() {
     };
     return (
 
-        <div className="container">
-            <div className="headings">LOGIN/REGISER</div>
+        <div className="container ms-4">
+            <div className="headings mt-40 font-bold">LOGIN/REGISER</div>
             {step === 1 ? (
                 <>
-                    <p>Enter your email below to receive an OTP</p>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" />
-                    <button onClick={handleSendOtp} className="btn" disabled={loading}>
+                    <p className="  ">Enter your email below to receive an OTP</p>
+                    <input className="w-100 bg-gray-200 mt-2 p-3 me-2 rounded" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" />
+                    <button onClick={handleSendOtp} className="btn bg-red-500 p-3 rounded text-white" disabled={loading}>
                         {loading ? "Sending..." : "Send OTP"}</button>
                 </>
             ) : (
