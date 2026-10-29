@@ -1,4 +1,4 @@
-import {products} from "../data/product"
+import {product} from "../data/product"
 
 function Homepage() {
     return(
